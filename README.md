@@ -1,7 +1,7 @@
 # CASS: Dataset for French text Summarization
 
 The code available in this repository allows to clean the CASS dataset and gives the split used in
-the paper '[STRASS: A Light and Effective Method for Extractive Summarization Based on Sentence Embeddings](https://www.aclweb.org/anthology/papers/P/P19/P19-2034/)' (Bouscarrat et al., 2019) that has appeared in the [Student Research Workshop](https://sites.google.com/view/acl19studentresearchworkshop/accepted-papers) of ACL 2019. It has been subsequently updated by Mila staff members to enable using a more recent version of the CASS dataset.
+the paper '[STRASS: A Light and Effective Method for Extractive Summarization Based on Sentence Embeddings](https://www.aclweb.org/anthology/papers/P/P19/P19-2034/)' (Bouscarrat et al., 2019) that has appeared in the [Student Research Workshop](https://sites.google.com/view/acl19studentresearchworkshop/accepted-papers) of ACL 2019. It has been subsequently updated by Mila staff members to enable using a more recent version of the CASS dataset. The original source code repository can be found [here](https://github.com/euranova/CASS-dataset).
 
 This dataset is composed of decisions made by the French Court of cassation and summaries of these decisions made by lawyer.
 
@@ -90,5 +90,26 @@ The file contains one sentence per row.
 ## Data split
 
 In the publication, we used the same split on all our experiments. These splits can be found in the folder
-data_split. The split are composed of 80% of train, 10% of valid and 10% of test. In each file, there is one
+`data_split_20180315`. The split are composed of 80% of train, 10% of valid and 10% of test. In each file, there is one
 name of document on each line, without any extension.
+
+New splits can be automatically created using the `create_splits.py` script:
+```
+$ python create_splits.py -h
+usage: create_splits.py [-h] [--cleaned-files-dir CLEANED_FILES_DIR] [--data-split-dir DATA_SPLIT_DIR] [--train-size TRAIN_SIZE] [--val-size VAL_SIZE] [--test-size TEST_SIZE] [--seed SEED]
+
+A utility script to create random splits for the CASS dataset
+
+options:
+  -h, --help            show this help message and exit
+  --cleaned-files-dir CLEANED_FILES_DIR
+                        path to cleaned files directory (default: ./cleaned_files/)
+  --data-split-dir DATA_SPLIT_DIR
+                        path to data splits directory (default: ./data_split_20220417/)
+  --train-size TRAIN_SIZE
+                        the proportion of the dataset to include in the train split (default: 0.8)
+  --val-size VAL_SIZE   the proportion of the dataset to include in the validation split (default: 0.1)
+  --test-size TEST_SIZE
+                        the proportion of the dataset to include in the test split (default: 0.1)
+  --seed SEED           random seed (default: 42)
+```
