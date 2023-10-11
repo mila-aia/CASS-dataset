@@ -90,5 +90,26 @@ The file contains one sentence per row.
 ## Data split
 
 In the publication, we used the same split on all our experiments. These splits can be found in the folder
-data_split. The split are composed of 80% of train, 10% of valid and 10% of test. In each file, there is one
+`data_split_20180315`. The split are composed of 80% of train, 10% of valid and 10% of test. In each file, there is one
 name of document on each line, without any extension.
+
+New splits can be automatically created using the `create_splits.py` script:
+```
+$ python create_splits.py -h
+usage: create_splits.py [-h] [--cleaned-files-dir CLEANED_FILES_DIR] [--data-split-dir DATA_SPLIT_DIR] [--train-size TRAIN_SIZE] [--val-size VAL_SIZE] [--test-size TEST_SIZE] [--seed SEED]
+
+A utility script to create random splits for the CASS dataset
+
+options:
+  -h, --help            show this help message and exit
+  --cleaned-files-dir CLEANED_FILES_DIR
+                        path to cleaned files directory (default: ./cleaned_files/)
+  --data-split-dir DATA_SPLIT_DIR
+                        path to data splits directory (default: ./data_split_20220417/)
+  --train-size TRAIN_SIZE
+                        the proportion of the dataset to include in the train split (default: 0.8)
+  --val-size VAL_SIZE   the proportion of the dataset to include in the validation split (default: 0.1)
+  --test-size TEST_SIZE
+                        the proportion of the dataset to include in the test split (default: 0.1)
+  --seed SEED           random seed (default: 42)
+```
